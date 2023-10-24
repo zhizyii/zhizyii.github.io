@@ -165,7 +165,7 @@
     "href": "finalproject.html#week-10",
     "title": "Final Project",
     "section": "Week 10",
-    "text": "Week 10\n\n\n\nPDF version\nWeek-10-documentations.pdf (not avail yet)\n\n\nR Markdown Version\nWeek-10-documentations.rmd (not avail yet)"
+    "text": "Week 10\n\n\n\nPDF version\nWeek-10-documentations.pdf\n\n\nR Markdown Version\nWeek-10-documentations.rmd"
   },
   {
     "objectID": "datastory.html",
@@ -254,7 +254,7 @@
   {
     "objectID": "datastory.html#time-series-plots",
     "href": "datastory.html#time-series-plots",
-    "title": "Who’s responsible?",
+    "title": "Greenhouse Gas Emissions Trend",
     "section": "Time Series Plots:",
     "text": "Time Series Plots:\n\nUse line graphs to show how greenhouse gas emissions have changed over time (2010-2021) for each of the following categories: Industry, Region, and Gas Types.\n\n\n1. Industry against Time\n\n\n\n\n\nIf you are interested to see the individual plots, feel free to select the industry of your choice!\n\nEmissions Over the Years by Industry\n\n\n\n\n\n2. Gas Type against Time\n\n\n\n\n\nIf you are interested to see the individual plots, feel free to select the gas type of your choice!\n\nEmissions Over the Years by Gas Type\n\n\n\n\n\n3. Region against Time\n\n\n\n\n\nIf you are interested to see the individual plots, feel free to select the region of your choice!\n\nEmissions Over the Years by Region"
   },
@@ -264,5 +264,40 @@
     "title": "My Shiny App",
     "section": "",
     "text": "Load the required libraries\nlibrary(shiny) library(ggplot2)\n\n\nDefine the user interface\nui &lt;- fluidPage( titlePanel(“Emissions Over the Years by Industry”),\nsidebarLayout( sidebarPanel( selectInput(“industry”, “Select Industry”, choices = unique(new_data$Industry)) ),\nmainPanel(\n  plotOutput(\"industry_plot\")\n)\n) )\n\n\nDefine the server logic\nserver &lt;- function(input, output) { output\\(industry_plot &lt;- renderPlot({  industry &lt;- input\\)industry years &lt;- 2010:2021\n# Calculate the sums for each year\nresults &lt;- sapply(years, function(year) {\n  filtered_data &lt;- new_data %&gt;%\n    filter(Industry == industry) %&gt;%\n    summarise(Year = as.integer(year), Total_Emissions = sum(get(as.character(year)))\n    )\n})\n\nresult &lt;- t(results)\nyears &lt;- as.numeric(result[, \"Year\"])\nco2_emissions &lt;- as.numeric(result[,\"Total_Emissions\"])\n\n# Create a plot\nplot(years, co2_emissions, type = \"l\",\n     col = \"blue\", xlab = \"Year\",\n     ylab = \"Emissions\", main = paste(industry))\n}) }\n\n\nRun the Shiny app\nshinyApp(ui = ui, server = server)"
+  },
+  {
+    "objectID": "finalproject.html#week-11",
+    "href": "finalproject.html#week-11",
+    "title": "Final Project",
+    "section": "Week 11",
+    "text": "Week 11\n\n\n\nPDF version\n\n\n\nR Markdown Version"
+  },
+  {
+    "objectID": "finalproject.html#week-12",
+    "href": "finalproject.html#week-12",
+    "title": "Final Project",
+    "section": "Week 12",
+    "text": "Week 12\n\n\n\nPDF version\n\n\n\nR Markdown Version"
+  },
+  {
+    "objectID": "finalproject.html#week-13",
+    "href": "finalproject.html#week-13",
+    "title": "Final Project",
+    "section": "Week 13",
+    "text": "Week 13\n\n\n\nPDF version\n\n\n\nR Markdown Version"
+  },
+  {
+    "objectID": "datastory.html#bar-plots",
+    "href": "datastory.html#bar-plots",
+    "title": "Greenhouse Gas Emissions Trend",
+    "section": "Bar Plots",
+    "text": "Bar Plots\n\n1. Gas Type against Industry\nFrom the plots below, we can see how the total emissions of each gas type vary across different industries.\n\n\n\n\n2. Gas Type against Region\nFrom the plots below, we can see how the total emissions of each gas type vary across different regions."
+  },
+  {
+    "objectID": "datastory.html#pie-charts",
+    "href": "datastory.html#pie-charts",
+    "title": "Greenhouse Gas Emissions Trend",
+    "section": "Pie Charts",
+    "text": "Pie Charts\n\nPercentage of emissions of each gas type produced by industry\n\n\nPercentage of emissions of each gas type produced by region"
   }
 ]

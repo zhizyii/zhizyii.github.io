@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Ho Zhi Yi - Who’s responsible?</title>
+<title>Ho Zhi Yi - Greenhouse Gas Emissions Trend</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -125,6 +125,11 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#gas-type-against-time" id="toc-gas-type-against-time" class="nav-link" data-scroll-target="#gas-type-against-time">2. Gas Type against Time</a></li>
   <li><a href="#region-against-time" id="toc-region-against-time" class="nav-link" data-scroll-target="#region-against-time">3. Region against Time</a></li>
   </ul></li>
+  <li><a href="#bar-plots" id="toc-bar-plots" class="nav-link" data-scroll-target="#bar-plots">Bar Plots</a>
+  <ul class="collapse">
+  <li><a href="#gas-type-against-industry" id="toc-gas-type-against-industry" class="nav-link" data-scroll-target="#gas-type-against-industry">1. Gas Type against Industry</a></li>
+  <li><a href="#gas-type-against-region" id="toc-gas-type-against-region" class="nav-link" data-scroll-target="#gas-type-against-region">2. Gas Type against Region</a></li>
+  </ul></li>
   </ul></li>
   </ul>
 </nav>
@@ -134,7 +139,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Who’s responsible?</h1>
+<h1 class="title">Greenhouse Gas Emissions Trend</h1>
 </div>
 
 
@@ -160,17 +165,12 @@ ul.task-list li input[type="checkbox"] {
 <p>We will be analyzing Greenhouse Gas Emissions Trends based on the Industry, Region and Gas Types shown in the table below:</p>
 <table class="table">
 <colgroup>
-<col style="width: 59%">
-<col style="width: 15%">
-<col style="width: 24%">
+<col style="width: 33%">
+<col style="width: 66%">
 </colgroup>
 <tbody>
 <tr class="odd">
 <td><strong>Industry</strong></td>
-<td><strong>Region</strong></td>
-<td><strong>Gas Types</strong></td>
-</tr>
-<tr class="even">
 <td><ol type="1">
 <li>Manufacturing</li>
 <li>Electricity, Gas, Steam and Air Conditioning Supply</li>
@@ -178,6 +178,9 @@ ul.task-list li input[type="checkbox"] {
 <li>Agriculture, Forestry and Fishing</li>
 <li>Construction</li>
 </ol></td>
+</tr>
+<tr class="even">
+<td><strong>Region</strong></td>
 <td><ol type="1">
 <li>Africa</li>
 <li>Americas</li>
@@ -185,10 +188,12 @@ ul.task-list li input[type="checkbox"] {
 <li>Europe</li>
 <li>Oceania</li>
 </ol></td>
+</tr>
+<tr class="odd">
+<td><strong>Gas Types</strong></td>
 <td><ol type="1">
 <li>Carbon dioxide</li>
 <li>Fluorinated gases</li>
-<li>Greenhouse gas</li>
 <li>Methane</li>
 <li>Nitrous oxide</li>
 </ol></td>
@@ -245,9 +250,24 @@ ul.task-list li input[type="checkbox"] {
 <h4 class="anchored" data-anchor-id="emissions-over-the-years-by-region">Emissions Over the Years by Region</h4>
 <iframe height="400" width="105%" frameborder="no" src="https://zhizyii.shinyapps.io/shinyapp3/">
 </iframe>
-
-
 </section>
+</section>
+</section>
+<section id="bar-plots" class="level2">
+<h2 class="anchored" data-anchor-id="bar-plots">Bar Plots</h2>
+<section id="gas-type-against-industry" class="level3">
+<h3 class="anchored" data-anchor-id="gas-type-against-industry">1. Gas Type against Industry</h3>
+<p>From the plots below, we can see how the total emissions of each gas type vary across different industries.</p>
+<iframe height="400" width="105%" frameborder="no" src="https://zhizyii.shinyapps.io/shinyapp4/">
+</iframe>
+</section>
+<section id="gas-type-against-region" class="level3">
+<h3 class="anchored" data-anchor-id="gas-type-against-region">2. Gas Type against Region</h3>
+<p>From the plots below, we can see how the total emissions of each gas type vary across different regions.</p>
+<iframe height="400" width="105%" frameborder="no" src="https://zhizyii.shinyapps.io/shinyapp6/">
+</iframe>
+
+
 </section>
 </section>
 </section>
