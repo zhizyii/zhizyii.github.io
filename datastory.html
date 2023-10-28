@@ -179,21 +179,24 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 </header>
 
-<p><img src="gif.gif" width="710" height="300"></p>
+<div class="quarto-figure quarto-figure-left">
+<figure class="figure">
+<p><img src="gif.gif" class="img-fluid figure-img"></p>
+</figure>
+</div>
 <section id="introduction" class="level1">
 <h1>Introduction</h1>
 <p>As concerns about greenhouse gas emissions continue to grow globally, it has become increasingly important to deepen our understanding about the main sources and driving forces behind these emissions. Understanding these factors is crucial in the process of making informed decisions and the development of effective strategies to address the urgent climate crisis.</p>
 <p>Our analysis, covering the years from 2010 to 2021, aims to reveal the contributing factors behind greenhouse gas emissions, which are intricately linked to climate change. Our data-driven approach provides us with the insights necessary to make informed decisions and implement comprehensive strategies to address this ongoing environmental challenge, ultimately guiding us towards a more sustainable future.</p>
-<p>Let us first watch a video to have a greater understanding about the Greenhouse Effect.</p>
-<div class="quarto-video ratio ratio-16x9"><iframe data-external="1" src="https://www.youtube.com/embed/SN5-DnOHQmE" title="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe></div>
+<p>Let us first watch a video to have a greater understanding about the Greenhouse Effect. </p><div class="quarto-video ratio ratio-16x9"><iframe data-external="1" src="https://www.youtube.com/embed/SN5-DnOHQmE" title="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe></div><p></p>
 </section>
 <section id="data" class="level1">
 <h1>Data</h1>
 <p>We will be analysing Greenhouse Gas Emissions Trends based on the Industries, Regions and Gas Types shown in the table below:</p>
 <table class="table">
 <colgroup>
-<col style="width: 23%">
-<col style="width: 76%">
+<col style="width: 22%">
+<col style="width: 77%">
 </colgroup>
 <tbody>
 <tr class="odd">
@@ -334,7 +337,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb3-30"><a href="#cb3-30" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Year"</span>, <span class="at">y =</span> <span class="st">"Emissions (Industry)"</span>, </span>
 <span id="cb3-31"><a href="#cb3-31" aria-hidden="true" tabindex="-1"></a>       <span class="at">color =</span> <span class="st">"Industry"</span>, </span>
 <span id="cb3-32"><a href="#cb3-32" aria-hidden="true" tabindex="-1"></a>       <span class="at">title=</span><span class="st">"Total Emissions Over the Years by Industry"</span>,</span>
-<span id="cb3-33"><a href="#cb3-33" aria-hidden="true" tabindex="-1"></a>       <span class="at">caption =</span> <span class="st">"Units: Million metric tons of CO2 equivalent"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb3-33"><a href="#cb3-33" aria-hidden="true" tabindex="-1"></a>       <span class="at">caption =</span> <span class="st">"Units: Million metric tons of CO2 equivalent"</span>)<span class="sc">+</span></span>
+<span id="cb3-34"><a href="#cb3-34" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">plot.background =</span> <span class="fu">element_rect</span>(<span class="at">fill =</span> <span class="st">"#F4F1E8"</span>),  <span class="co"># Set the background color of the plot</span></span>
+<span id="cb3-35"><a href="#cb3-35" aria-hidden="true" tabindex="-1"></a>    <span class="at">legend.background =</span> <span class="fu">element_rect</span>(<span class="at">fill =</span> <span class="st">"#F4F1E8"</span>)) <span class="co"># Set the background color of the legend</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </div>
@@ -342,7 +347,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>If you are interested to see the individual plots, feel free to select the industry of your choice!</p>
 <section id="emissions-over-the-years-by-industry" class="level4">
 <h4 class="anchored" data-anchor-id="emissions-over-the-years-by-industry">Emissions Over the Years by Industry</h4>
-<iframe height="400" width="105%" frameborder="no" src="https://zhizyii.shinyapps.io/shinyapp/">
+<iframe height="400" width="100%" frameborder="no" src="https://zhizyii.shinyapps.io/shinyapp/">
 </iframe>
 </section>
 </section>
@@ -393,7 +398,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb4-30"><a href="#cb4-30" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Year"</span>, <span class="at">y =</span> <span class="st">"Emissions (Gas Type)"</span>, </span>
 <span id="cb4-31"><a href="#cb4-31" aria-hidden="true" tabindex="-1"></a>       <span class="at">color =</span> <span class="st">"Gas Type"</span>, </span>
 <span id="cb4-32"><a href="#cb4-32" aria-hidden="true" tabindex="-1"></a>       <span class="at">title =</span> <span class="st">"Total Emissions Over the Years by Gas Type"</span>, </span>
-<span id="cb4-33"><a href="#cb4-33" aria-hidden="true" tabindex="-1"></a>       <span class="at">caption =</span> <span class="st">"Units: Million metric tons of CO2 equivalent"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb4-33"><a href="#cb4-33" aria-hidden="true" tabindex="-1"></a>       <span class="at">caption =</span> <span class="st">"Units: Million metric tons of CO2 equivalent"</span>)<span class="sc">+</span></span>
+<span id="cb4-34"><a href="#cb4-34" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">plot.background =</span> <span class="fu">element_rect</span>(<span class="at">fill =</span> <span class="st">"#F4F1E8"</span>),  <span class="co"># Set the background color of the plot</span></span>
+<span id="cb4-35"><a href="#cb4-35" aria-hidden="true" tabindex="-1"></a>    <span class="at">legend.background =</span> <span class="fu">element_rect</span>(<span class="at">fill =</span> <span class="st">"#F4F1E8"</span>)) <span class="co"># Set the background color of the legend</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </div>
@@ -401,7 +408,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>If you are interested to see the individual plots, feel free to select the gas type of your choice!</p>
 <section id="emissions-over-the-years-by-gas-type" class="level4">
 <h4 class="anchored" data-anchor-id="emissions-over-the-years-by-gas-type">Emissions Over the Years by Gas Type</h4>
-<iframe height="400" width="105%" frameborder="no" src="https://zhizyii.shinyapps.io/shinyapp2/">
+<iframe height="400" width="100%" frameborder="no" src="https://zhizyii.shinyapps.io/shinyapp2/">
 </iframe>
 </section>
 </section>
@@ -454,7 +461,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb5-32"><a href="#cb5-32" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Year"</span>, <span class="at">y =</span> <span class="st">"Emissions (Region)"</span>, </span>
 <span id="cb5-33"><a href="#cb5-33" aria-hidden="true" tabindex="-1"></a>       <span class="at">color =</span> <span class="st">"Region"</span>, </span>
 <span id="cb5-34"><a href="#cb5-34" aria-hidden="true" tabindex="-1"></a>       <span class="at">title =</span> <span class="st">"Total Emissions Over the Years by Region"</span>, </span>
-<span id="cb5-35"><a href="#cb5-35" aria-hidden="true" tabindex="-1"></a>       <span class="at">caption =</span> <span class="st">"Units: Million metric tons of CO2 equivalent"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb5-35"><a href="#cb5-35" aria-hidden="true" tabindex="-1"></a>       <span class="at">caption =</span> <span class="st">"Units: Million metric tons of CO2 equivalent"</span>)<span class="sc">+</span></span>
+<span id="cb5-36"><a href="#cb5-36" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">plot.background =</span> <span class="fu">element_rect</span>(<span class="at">fill =</span> <span class="st">"#F4F1E8"</span>),  <span class="co"># Set the background color of the plot</span></span>
+<span id="cb5-37"><a href="#cb5-37" aria-hidden="true" tabindex="-1"></a>    <span class="at">legend.background =</span> <span class="fu">element_rect</span>(<span class="at">fill =</span> <span class="st">"#F4F1E8"</span>)) <span class="co"># Set the background color of the legend</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </div>
@@ -462,7 +471,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>If you are interested to see the individual plots, feel free to select the region of your choice!</p>
 <section id="emissions-over-the-years-by-region" class="level4">
 <h4 class="anchored" data-anchor-id="emissions-over-the-years-by-region">Emissions Over the Years by Region</h4>
-<iframe height="400" width="105%" frameborder="no" src="https://zhizyii.shinyapps.io/shinyapp3/">
+<iframe height="400" width="100%" frameborder="no" src="https://zhizyii.shinyapps.io/shinyapp3/">
 </iframe>
 </section>
 </section>
@@ -472,13 +481,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="gas-type-against-industry" class="level3">
 <h3 class="anchored" data-anchor-id="gas-type-against-industry">1. Gas Type against Industry</h3>
 <p>From the plots below, we can see how the total emissions of each gas type vary across different industries.</p>
-<iframe height="400" width="105%" frameborder="no" src="https://zhizyii.shinyapps.io/shinyapp4/">
+<iframe height="400" width="100%" frameborder="no" src="https://zhizyii.shinyapps.io/shinyapp4/">
 </iframe>
 </section>
 <section id="gas-type-against-region" class="level3">
 <h3 class="anchored" data-anchor-id="gas-type-against-region">2. Gas Type against Region</h3>
 <p>From the plots below, we can see how the total emissions of each gas type vary across different regions.</p>
-<iframe height="400" width="105%" frameborder="no" src="https://zhizyii.shinyapps.io/shinyapp6/">
+<iframe height="400" width="100%" frameborder="no" src="https://zhizyii.shinyapps.io/shinyapp6/">
 </iframe>
 
 
