@@ -270,7 +270,7 @@
     "href": "finalproject.html#week-11",
     "title": "Final Project",
     "section": "Week 11",
-    "text": "Week 11\n\n\n\nPDF version\n\n\n\nR Markdown Version"
+    "text": "Week 11\n\n\n\nPDF version\nWeek-11-documentations.pdf\n\n\nR Markdown Version\nWeek-11-documentations.rmd"
   },
   {
     "objectID": "finalproject.html#week-12",
@@ -348,5 +348,54 @@
     "title": "Your Document Title",
     "section": "",
     "text": "Your Markdown Content Goes Here"
+  },
+  {
+    "objectID": "challenge11.html",
+    "href": "challenge11.html",
+    "title": "Challenge 11",
+    "section": "",
+    "text": "library(httr)\nlibrary(jsonlite)\nlibrary(tidyverse)\n\n\nhistoric_state_data_url &lt;- \"https://api.covidactnow.org/v2/states.timeseries.json?apiKey=c85924a8e71d4785aaefb9e3234f18c4\"\nraw_data &lt;- GET(historic_state_data_url)"
+  },
+  {
+    "objectID": "challenge11.html#i.-what-is-the-population-in-various-states-of-u.s.a",
+    "href": "challenge11.html#i.-what-is-the-population-in-various-states-of-u.s.a",
+    "title": "Challenge 11",
+    "section": "i. What is the population in various states of U.S.A?",
+    "text": "i. What is the population in various states of U.S.A?\n\ndata$population\n\n [1]   731545  4903185  3017804  7278717 39512223  5758736  3565287   705749\n [9]   973764 21477737 10617423  1415872  3155070  1787065 12671821  6732219\n[17]  2913314  4467673  4648794  6892503  6045680  1344212  9986857  5639632\n[25]  6137428    53605  2976149  1068778 10488084   762062  1934408  1359711\n[33]  8882190  2096829  3080156 19453561 11689100  3956971  4217737 12801989\n[41]  3193694  1059361  5148714   884659  6829174 28995881  3205958  8535519\n[49]   623989  7614893  5822434  1792147   578759\n\n\nplot\n\nggplot(data, aes(x=state,y=population)) + \n  geom_bar(stat=\"identity\") +\n  labs(x=\"States\",y=\"Population\") + \n  theme_bw() +\n  theme(axis.text.x = element_text(angle = 90, hjust = 1), legend.justification = c(0, 1))"
+  },
+  {
+    "objectID": "challenge11.html#ii.-what-fraction-of-the-population-was-infected",
+    "href": "challenge11.html#ii.-what-fraction-of-the-population-was-infected",
+    "title": "Challenge 11",
+    "section": "ii. What fraction of the population was infected ?",
+    "text": "ii. What fraction of the population was infected ?\n\nsum(data$actuals$cases)/sum(data$population)\n\n[1] 0.3154839\n\n\nplot\n\nggplot(data, aes(x=state,y=(data$actuals$cases/population))) + \n  geom_bar(stat=\"identity\") + \n  labs(x=\"States\",y=\"Infected (%)\") +\n  theme_bw() +\n  theme(axis.text.x = element_text(angle = 90, hjust = 1), legend.justification = c(0, 1))"
+  },
+  {
+    "objectID": "challenge11.html#iii.-what-fraction-of-infected-persons-recovered",
+    "href": "challenge11.html#iii.-what-fraction-of-infected-persons-recovered",
+    "title": "Challenge 11",
+    "section": "iii. What fraction of infected persons recovered ?",
+    "text": "iii. What fraction of infected persons recovered ?\n\nsum(data$actuals$cases - data$actuals$deaths)/sum(data$actuals$cases)\n\n[1] 0.9891648\n\n\nplot\n\nggplot(data, aes(x=state,y=((data$actuals$cases-data$actuals$deaths)/data$actuals$cases))) + \n  geom_bar(stat=\"identity\") + \n  labs(x=\"States\",y=\"recovered (%)\") +\n  theme_bw() +\n  theme(axis.text.x = element_text(angle = 90, hjust = 1), legend.justification = c(0, 1))"
+  },
+  {
+    "objectID": "challenge11.html#iv.-what-fraction-of-the-population-is-currently-vaccinated",
+    "href": "challenge11.html#iv.-what-fraction-of-the-population-is-currently-vaccinated",
+    "title": "Challenge 11",
+    "section": "iv. What fraction of the population is currently vaccinated ?",
+    "text": "iv. What fraction of the population is currently vaccinated ?\n\nsum(data$actuals$vaccinationsCompleted)/sum(data$population)\n\n[1] NA\n\n\nplot\n\nggplot(data, aes(x=state,y=((data$actuals$vaccinationsCompleted)/data$population))) + \n  geom_bar(stat=\"identity\") + \n  labs(x=\"States\",y=\"recovered (%)\") +\n  theme_bw() +\n  theme(axis.text.x = element_text(angle = 90, hjust = 1), legend.justification = c(0, 1))\n\nWarning: Use of `data$population` is discouraged.\nℹ Use `population` instead.\n\n\nWarning: Removed 3 rows containing missing values (`position_stack()`)."
+  },
+  {
+    "objectID": "challenge11.html#v.-what-was-the-transmission-like-in-the-various-states",
+    "href": "challenge11.html#v.-what-was-the-transmission-like-in-the-various-states",
+    "title": "Challenge 11",
+    "section": "v. What was the transmission-like in the various states ?",
+    "text": "v. What was the transmission-like in the various states ?\n\ntime_series &lt;- data %&gt;%\n  unnest(actualsTimeseries) \n\n# Creating a new dataframe with needed data\n# Save date\ntime_series_transmission &lt;- tibble(Date=time_series$cdcTransmissionLevelTimeseries[[which(data$state==\"CA\")]]$date)\n# Transmission levels in each state\ntime_series_transmission$Alaska &lt;- time_series$cdcTransmissionLevelTimeseries[[which(data$state==\"AK\")]]$cdcTransmissionLevel\n\ntime_series_transmission$California &lt;- time_series$cdcTransmissionLevelTimeseries[[which(data$state==\"CA\")]]$cdcTransmissionLevel\n\ntime_series_transmission$New_Jersey &lt;- time_series$cdcTransmissionLevelTimeseries[[which(data$state==\"NJ\")]]$cdcTransmissionLevel\n\ntime_series_transmission$Tennessee &lt;- time_series$cdcTransmissionLevelTimeseries[[which(data$state==\"TN\")]]$cdcTransmissionLevel\n\ntime_series_transmission$District_of_Columbia &lt;- time_series$cdcTransmissionLevelTimeseries[[which(data$state==\"DC\")]]$cdcTransmissionLevel\n\nprint(head(time_series_transmission))\n\n# A tibble: 6 × 6\n  Date       Alaska California New_Jersey Tennessee District_of_Columbia\n  &lt;chr&gt;       &lt;int&gt;      &lt;int&gt;      &lt;int&gt;     &lt;int&gt;                &lt;int&gt;\n1 2020-03-01      0          0          0         0                    0\n2 2020-03-02      0          0          0         0                    0\n3 2020-03-03      0          0          0         0                    0\n4 2020-03-04      0          0          0         0                    0\n5 2020-03-05      0          0          0         0                    0\n6 2020-03-06      0          0          0         0                    0\n\n\nplot\n\ntime_series_transmission[seq(1,1300,by=100),]%&gt;%\n  pivot_longer(cols=Alaska:District_of_Columbia,names_to=\"Countries\",values_to=\"Transmission\") %&gt;%\n  ggplot(aes(x=Date,y=Transmission,colour=Countries,group=Countries)) +\n  geom_point(show.legend=TRUE) + \n  labs(x=\"Date\",y=\"Transmission Level\") + \n  theme_bw() +\n  theme(axis.text.x = element_text(angle = 45, hjust = 1), legend.justification = c(0, 1))"
+  },
+  {
+    "objectID": "challenge11.html#vi.-how-did-the-disease-progress-since-it-started",
+    "href": "challenge11.html#vi.-how-did-the-disease-progress-since-it-started",
+    "title": "Challenge 11",
+    "section": "vi. How did the disease progress since it started ?",
+    "text": "vi. How did the disease progress since it started ?\nit increased at an increasing rate\n\n# New data-frame with dates\ntime_series_cases &lt;- list(Alaska = time_series %&gt;% \n                            filter(state==\"AK\") %&gt;% \n                            select(date,cases))\n\n# Cases of each state\n(time_series_cases$California &lt;- time_series %&gt;% \n  filter(state==\"CA\") %&gt;% \n  select(date,cases))\n\n# A tibble: 1,368 × 2\n   date       cases\n   &lt;chr&gt;      &lt;int&gt;\n 1 2020-01-25     1\n 2 2020-01-26     2\n 3 2020-01-27     2\n 4 2020-01-28     2\n 5 2020-01-29     2\n 6 2020-01-30     2\n 7 2020-01-31     3\n 8 2020-02-01     3\n 9 2020-02-02     6\n10 2020-02-03     6\n# ℹ 1,358 more rows\n\n(time_series_cases$New_Jersey &lt;- time_series %&gt;% \n  filter(state==\"NJ\") %&gt;% \n  select(date,cases))\n\n# A tibble: 1,330 × 2\n   date       cases\n   &lt;chr&gt;      &lt;int&gt;\n 1 2020-03-01    NA\n 2 2020-03-02    NA\n 3 2020-03-03    NA\n 4 2020-03-04     1\n 5 2020-03-05     2\n 6 2020-03-06     4\n 7 2020-03-07     4\n 8 2020-03-08     6\n 9 2020-03-09    11\n10 2020-03-10    15\n# ℹ 1,320 more rows\n\n(time_series_cases$Tennessee &lt;- time_series %&gt;% \n  filter(state==\"TN\") %&gt;% \n  select(date,cases))\n\n# A tibble: 1,333 × 2\n   date       cases\n   &lt;chr&gt;      &lt;int&gt;\n 1 2020-03-01    NA\n 2 2020-03-02    NA\n 3 2020-03-03    NA\n 4 2020-03-04    NA\n 5 2020-03-05     1\n 6 2020-03-06     1\n 7 2020-03-07     1\n 8 2020-03-08     3\n 9 2020-03-09     4\n10 2020-03-10     7\n# ℹ 1,323 more rows\n\n(time_series_cases$District_of_Columbia &lt;- time_series %&gt;% \n  filter(state==\"DC\") %&gt;% \n  select(date,cases))\n\n# A tibble: 1,331 × 2\n   date       cases\n   &lt;chr&gt;      &lt;int&gt;\n 1 2020-03-06    NA\n 2 2020-03-07     1\n 3 2020-03-08     1\n 4 2020-03-09     4\n 5 2020-03-10     4\n 6 2020-03-11    10\n 7 2020-03-12    10\n 8 2020-03-13    10\n 9 2020-03-14    16\n10 2020-03-15    17\n# ℹ 1,321 more rows\n\n\ndata to plot\n\ndata_to_plot &lt;- tibble(Date_Alaska = time_series_cases$Alaska$date[seq(1,1300,by=100)],\n Cases_Alaska = time_series_cases$Alaska$cases[seq(1,1300,by=100)],\n Date_California = time_series_cases$California$date[seq(1,1300,by=100)],\n Cases_California = time_series_cases$California$cases[seq(1,1300,by=100)],\n Date_New_Jersey = time_series_cases$New_Jersey$date[seq(1,1300,by=100)],\n Cases_New_Jersey = time_series_cases$New_Jersey$cases[seq(1,1300,by=100)],\n Date_Tennessee = time_series_cases$Tennessee$date[seq(1,1300,by=100)],\n Cases_Tennessee = time_series_cases$Tennessee$cases[seq(1,1300,by=100)],\n Date_District_of_Columbia = time_series_cases$District_of_Columbia$date[seq(1,1300,by=100)],\n Cases_District_of_Columbia = time_series_cases$District_of_Columbia$cases[seq(1,1300,by=100)])\n\nplots\n\nlibrary(cowplot)\n\nfig1 &lt;- ggplot(data_to_plot, aes(x = Date_Alaska, y = Cases_Alaska)) +\n  geom_point() +\n  labs(x = \"Date\", y = \"Cases\", title = \"Alaska\") +\n  theme_bw() +\n  theme(axis.text.x = element_text(angle = 35, hjust = 1), legend.justification = c(0, 1))\n\nfig2 &lt;- ggplot(data_to_plot, aes(x = Date_California, y = Cases_California)) +\n  geom_point() +\n  labs(x = \"Date\", y = \"Cases\", title = \"California\") +\n  theme_bw() +\n  theme(axis.text.x = element_text(angle = 35, hjust = 1), legend.justification = c(0, 1))\n\nfig3 &lt;- ggplot(data_to_plot, aes(x = Date_New_Jersey, y = Cases_New_Jersey)) +\n  geom_point() +\n  labs(x = \"Date\", y = \"Cases\", title = \"New Jersey\") +\n  theme_bw() +\n  theme(axis.text.x = element_text(angle = 35, hjust = 1), legend.justification = c(0, 1))\n\nfig4 &lt;- ggplot(data_to_plot, aes(x = Date_Tennessee, y = Cases_Tennessee)) +\n  geom_point() +\n  labs(x = \"Date\", y = \"Cases\", title = \"Tennessee\") +\n  theme_bw() +\n  theme(axis.text.x = element_text(angle = 35, hjust = 1), legend.justification = c(0, 1))\n\nfig5 &lt;- ggplot(data_to_plot, aes(x = Date_District_of_Columbia, y = Cases_District_of_Columbia)) +\n  geom_point() +\n  labs(x = \"Date\", y = \"Cases\", title = \"District of Columbia\") +\n  theme_bw() +\n  theme(axis.text.x = element_text(angle = 35, hjust = 1), legend.justification = c(0, 1))\n\nplot_grid(\n  fig1, fig2, fig3, fig4, fig5,\n  ncol = 2, labels = LETTERS[1:5],\n  align = \"v\", axis = \"lr\"\n)\n\nscreenshot\n\nknitr::include_graphics(\"screenshot.jpg\")"
   }
 ]
